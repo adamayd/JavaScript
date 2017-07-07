@@ -1,4 +1,4 @@
-#Typing_Speed_Tester
+# Typing_Speed_Tester
 
 Project 2 from Lynda.com Javascript Essential Training 2017 by Morten Rand-Hendriksen
 
