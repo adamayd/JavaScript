@@ -1,3 +1,9 @@
+# Notes for my personal repo
+
+This repo is cloned from the original Wes Bos course and I will be saving my progress on the "START" files in each directory.  If you clone this repo you will not have the original files to begin with.  I recommend cloning directly from Wes instead.
+
+Also because of my work schedule I will have now dubbed this as Javascript 30 Days Off Challenge.  I may only be doing these on days off.  Enjoy
+
 ![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
