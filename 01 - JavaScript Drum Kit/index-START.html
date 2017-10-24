@@ -59,6 +59,30 @@
 
 <script>
 
+  function playSound(ev) {
+    const audio = document.querySelector(`audio[data-key="${ev.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${ev.keyCode}"]`);
+    if (!audio) return; // stop function
+    audio.currentTime = 0; // rewinds to beginning of file to replay immediately
+    audio.play(); // play the sound
+    key.classList.add('playing');
+  }
+
+  function removeTransform(ev) {
+    if (ev.propertyName !== 'transform') return; // skip if not a transform
+    this.classList.remove('playing');
+  }
+  
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransform));
+  window.addEventListener('keydown', playSound);
+
+  // window.addEventListener('keyup', function(ev) {
+  //   const keyRelease = document.querySelector(`audio[data-key="${ev.keyCode}"]`);
+  //   keyRelease.classList.remove('playing');
+  // })
+  // This did work to clear the playing class, but added the tutorial's solution to end product.
+  
 </script>
 
 
