@@ -141,6 +141,8 @@
       if (prevPanel) {
         if (targetPanel != prevPanel) {
           document.querySelector('.' + prevPanel).classList.toggle('open');
+        } else {
+          targetPanel = '';
         }
       }
       prevPanel = targetPanel;
