@@ -55,6 +55,8 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
+
+document.addEventListener('keyup', (ev) => ev.keyCode == 32 && togglePlay());
 toggle.addEventListener('click', togglePlay);
 skipButtons.forEach(button => button.addEventListener('click', skip));
 
