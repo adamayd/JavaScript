@@ -18,6 +18,10 @@ body {
   justify-content: center;
 }
 
+.body_black {
+  background: #000;
+}
+
 .player {
   max-width:750px;
   border:5px solid rgba(0,0,0,0.2);
@@ -101,7 +105,14 @@ body {
   width:50%;
   background:#ffc600;
   flex:0;
-  flex-basis:50%;
+  flex-basis:0%;
+}
+
+.full__screen {
+  min-width: 100%;
+  min-height: 100%;
+  /* background: #000; */
+  border: 0;
 }
 
 /* unholy css to style input type="range" */
