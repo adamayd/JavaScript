@@ -33,6 +33,7 @@
   const checkEm = document.querySelector('.checking');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
+  let checkStatus = 0;
 
   function addItem (ev) {
     // console.log('hello');
@@ -50,15 +51,28 @@
   }
 
   function checkAll(ev) {
-    console.log('checking em');
+    // console.log('checking em');
     ev.preventDefault();
+    if (checkStatus == 1) {
+      checkStatus = 2;
+      populateList(items, itemsList);
+    } else {
+      checkStatus = 1;
+      populateList(items, itemsList);
+    }
   }
 
   function populateList(plates = [], platesList) {
     platesList.innerHTML = plates.map((plate, i) => {
+      let plateIsChecked = plate.done;
+      if (checkStatus == 1) {
+        plateIsChecked = true;
+      } else if (checkStatus == 2) {
+        plateIsChecked = false;
+      }
       return `
         <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+          <input type="checkbox" data-index=${i} id="item${i}" ${plateIsChecked ? 'checked' : ''} />
           <label for="item${i}">${plate.text}</label>
         </li>
       `;
