@@ -47,32 +47,29 @@
     populateList(items, itemsList);
     localStorage.setItem('items', JSON.stringify(items));
     this.reset();
-    console.table(items);
+    // console.table(items);
   }
 
   function checkAll(ev) {
     // console.log('checking em');
-    ev.preventDefault();
-    if (checkStatus == 1) {
-      checkStatus = 2;
-      populateList(items, itemsList);
+    if (ev) ev.preventDefault();
+    if (items.some(item => item.done === false)) {
+      items.map((item) => item.done = true);
+      checkEm.innerHTML = '<input type="submit" value="Uncheck All" />';
     } else {
-      checkStatus = 1;
-      populateList(items, itemsList);
+      items.map((item) => item.done = false);
+      checkEm.innerHTML = '<input type="submit" value="Check All" />';
     }
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
+    // console.log('populate the list');
   }
 
   function populateList(plates = [], platesList) {
     platesList.innerHTML = plates.map((plate, i) => {
-      let plateIsChecked = plate.done;
-      if (checkStatus == 1) {
-        plateIsChecked = true;
-      } else if (checkStatus == 2) {
-        plateIsChecked = false;
-      }
       return `
         <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${plateIsChecked ? 'checked' : ''} />
+          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
           <label for="item${i}">${plate.text}</label>
         </li>
       `;
@@ -88,6 +85,11 @@
     items[index].done = !items[index].done;
     localStorage.setItem('items', JSON.stringify(items));
     populateList(items, itemsList);
+    if (items.every(item => item.done === true)) {
+      checkEm.innerHTML = '<input type="submit" value="Uncheck All" />';
+    } else {
+      checkEm.innerHTML = '<input type="submit" value="Check All" />';
+    }
   }
 
   addItems.addEventListener('submit', addItem);
