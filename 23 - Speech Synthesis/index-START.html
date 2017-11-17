@@ -43,7 +43,7 @@
     // console.log(voices);
     // const voiceOptions = voices
     voicesDropdown.innerHTML = voices
-      .filter(voice => voice.lang.includes('en'))
+      .filter(voice => voice.lang.includes('en')) // filters only english voices
       .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
       .join('');
     // voicesDropdown.innerHTML = voiceOptions;
