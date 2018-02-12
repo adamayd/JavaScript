@@ -1,12 +1,12 @@
-console.log(process.argv[2]);
-console.log(process.argv[3]);
-
-
-function countTo6(userName, comment) {
-  function html(strings, userName, comment) {
-    return strings[0] + userName + strings[1] + comment + strings[2];
-  }
-  console.log(html`<b>${userName}</b>: ${comment} - Feb 10, 2017`);
+function html(strings, ...inputs) {
+  const output = inputs.map(npt => {
+    return npt.replace(/&/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
+       .replace(/\'/g, '&apos;')
+       .replace(/\"/g, '&quot;');
+  });
+  return strings[0] + output[0] + strings[1] + output[1] + strings[2];
 }
 
-countTo6("Ian Hickson", "Speaking of which, we added the first draft of the <canvas> element to the Web Apps 1.0 draft proposal specification the other day.");
+console.log(html`<b>${process.argv[2]} says</b>: \"${process.argv[3]}\"`);
