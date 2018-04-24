@@ -6,15 +6,21 @@
 </head>
 <body>
 <script>
+  // var width = 100;
+  // console.log(width);
+  // var width = 200; // don't do this :)
+  // console.log(width);
   function setWidth() {
     var width = 100;
     console.log(width);
   }
   setWidth();
+  // console.log(width); width is outside of function scope
 
   var age = 100;
   if(age > 12) {
-    const dogYears = age * 7;
+    // var dogYears = age * 7; // leaks to entire window since var is function scoped, but not in function
+    let dogYears = age * 7; //or const dogYears since let and const are block {} scoped
     console.log(`You are ${dogYears} dog years old!`);
   }
 
