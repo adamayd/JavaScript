@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+  // (function() {
+  //   var name = 'adam';
+  //   console.log(name);
+  // })();
+  {
+    const name = 'adam';
+    console.log(name)
+  }
+
+  // for(var i = 0; i < 10; i++) { // var is overwritten with every pass
+  for(let i = 0; i < 10; i++) { // let scopes to block 
+    console.log(i);
+    setTimeout(function() {
+      console.log('The number is ' + i);
+    })
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  const key = 'abc123';
+  // var points = 50; var allows for redeclaration see var points below
+  let points = 50;
+  let winner = false;
+
+  // var points = 60;
+  // let points = 60;
+
+  // if(points > 40) {
+  //   console.log('it ran')
+  //   let winner = true; // separate variable from false winner due to scope
+  // }
+
+  points = 60; 
+  // key = 'abc1234' // cannot update const
+
+  const person = {
+    name: 'Adam',
+    age: 40
+  } // can't change object, but can change attributes in object
+
+  const adam = Object.freeze(person); // freezes object attributes
+
+</script>
+</body>
+</html>
