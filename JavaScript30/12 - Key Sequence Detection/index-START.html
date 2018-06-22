@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <!-- cornify has konami code built in and adds new item on any keypress after code is entered -->
+</head>
+<body>
+<script>
+  const pressed = [];
+  const secretCode = 'alaina';
+  window.addEventListener('keyup', (ev) => {
+    console.log(ev.key);
+    pressed.push(ev.key);
+    pressed.splice(-secretCode.length - 1 , pressed.length - secretCode.length);
+    if (pressed.join('') == secretCode) {
+      // alert('Ding Ding');
+      cornify_add();
+    }
+    console.log(pressed);
+  })
+</script>
+</body>
+</html>
